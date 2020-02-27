@@ -119,6 +119,9 @@ void ExampleBaseScene::InitScene(float windowWidth, float windowHeight)
 		tempPhsBody = PhysicsBody(tempBody, float(tempSpr.GetWidth() - shrinkX), float(tempSpr.GetHeight() - shrinkY),
 			vec2(0.f, 0.f), false);
 
+		//Makes the box not able to rotate
+		tempBody->SetFixedRotation(true);
+
 		//Sets up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::PhysicsBit() | EntityIdentifier::AnimationBit();
 		ECS::SetUpIdentifier(entity, bitHolder, "Main Box");
@@ -266,11 +269,7 @@ void ExampleBaseScene::KeyboardHold()
 
 		if (Input::GetKey(Key::W))
 		{
-			velocity += b2Vec2(0.f, inputVal+25);
-		}
-		if (Input::GetKey(Key::S))
-		{
-			//velocity += b2Vec2(0.f, -inputVal);
+			//velocity += b2Vec2(0.f, inputVal+25);
 		}
 
 		if (Input::GetKey(Key::A))
@@ -279,7 +278,7 @@ void ExampleBaseScene::KeyboardHold()
 		}
 		if (Input::GetKey(Key::D))
 		{
-			velocity += b2Vec2(inputVal + 25, 0.f);
+			velocity += b2Vec2(inputVal + 22, 0.f);
 		}
 
 		//dash right E

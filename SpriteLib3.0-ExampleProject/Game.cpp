@@ -107,15 +107,6 @@ bool Game::Run()
 
 void Game::Update()
 {
-
-
-	//floor
-	//Getting the main player position then prventing from go blow a certain y value
-	vec3 position = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
-	if (position.y <= -85) {
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y = -85));
-	}
-
 	//Makes the camera focus on this entity
 	ECS::GetComponent<HorizontalScroll>(EntityIdentifier::MainCamera()).SetFocus(&ECS::GetComponent<Transform>(EntityIdentifier::MainPlayer()));
 	ECS::GetComponent<VerticalScroll>(EntityIdentifier::MainCamera()).SetFocus(&ECS::GetComponent<Transform>(EntityIdentifier::MainPlayer()));
